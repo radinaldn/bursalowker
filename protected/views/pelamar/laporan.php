@@ -77,6 +77,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					<table id="example" class="table table-striped jambo_table bulk-action" cellspacing="0" width="100%">
 						<br>
 						<div class="x_title">
+						<div class="col-md-6">
+						<button>asd</button>
+						</div>
 							<br>
 					</div>
 						<thead>
@@ -105,7 +108,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										<td><?php echo $no;?></td>
 										<td><?= $data['no_ktp']; ?></td> 
 										<td><?= $data['nama_lengkap']; ?></td>
-										<td><?= $data['nama_kota']; ?></td>
+										<td><?= $data['name']; ?></td>
 										<td><?= $data['nama_jurusan']; ?></td>
 										<td><?= $data['username']; ?></td>
 										<td><?= $data['photo']; ?></td>

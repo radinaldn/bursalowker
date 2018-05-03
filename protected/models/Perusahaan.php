@@ -148,7 +148,7 @@ class Perusahaan extends CActiveRecord
 	}
 
 	public function getAllValid(){
-		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kota, kota.nama_kota, perusahaan.username, perusahaan.alamat, perusahaan.no_telp FROM perusahaan INNER JOIN kota WHERE perusahaan.id_kota = kota.id_kota AND perusahaan.level = 'perusahaan' ORDER BY perusahaan.tgl_daftar DESC;";
+		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kota, tb_kabkota.name, perusahaan.username, perusahaan.alamat, perusahaan.no_telp FROM perusahaan INNER JOIN tb_kabkota WHERE perusahaan.id_kota = tb_kabkota.id_kabkota AND perusahaan.level = 'perusahaan' ORDER BY perusahaan.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -157,7 +157,7 @@ class Perusahaan extends CActiveRecord
 	}
 
 	public function getAllNonValid(){
-		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kota, kota.nama_kota, perusahaan.username, perusahaan.alamat, perusahaan.no_telp FROM perusahaan INNER JOIN kota WHERE perusahaan.id_kota = kota.id_kota AND perusahaan.level = '' ORDER BY perusahaan.tgl_daftar DESC;";
+		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kota, tb_kabkota.name, perusahaan.username, perusahaan.alamat, perusahaan.no_telp FROM perusahaan INNER JOIN tb_kabkota WHERE perusahaan.id_kota = tb_kabkota.id_kabkota AND perusahaan.level = '' ORDER BY perusahaan.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)

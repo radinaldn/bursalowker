@@ -40,7 +40,7 @@ $this->menu=array(
                     echo date_format($date, 'j F Y');
                      ?>
 
-                            </span> oleh <a class="purple" target = "_blank" href="../perusahaan/<?= $data['id_perusahaan']; ?>"><?= $data['nama_perusahaan']; ?></a> <a><?= $data['nama_kota']; ?></a>
+                            </span> oleh <a class="purple" target = "_blank" href="../perusahaan/<?= $data['id_perusahaan']; ?>"><?= $data['nama_perusahaan']; ?></a> <a><?= $data['name']; ?></a>
                           </div>
                           <p class="excerpt">Tipe pekerjaan : <?= $data['tipe_pekerjaan']?>.
                           	<br>Gaji : <span><?= $data['tawaran_gaji']; ?></span>

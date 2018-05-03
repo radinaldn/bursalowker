@@ -119,7 +119,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										<!-- <td><?= $data['id_lowongan']; ?></td> -->
 										<td><?= $data['nama_kategori']; ?></td>
 										<td><a href="../perusahaan/<?= $data['id_perusahaan']; ?>"><?= $data['pekerjaan']; ?></a></td>
-										<td><?= $data['nama_kota']; ?></td>
+										<td><?= $data['name']; ?></td>
 										<td><?= $data['nama_jurusan']; ?></td>
 										<td><?= $data['tgl_buat']; ?></td>
 										<td><?= $data['tgl_panggilan']; ?></td>

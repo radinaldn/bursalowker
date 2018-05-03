@@ -44,11 +44,12 @@ $date = date("Y-m-d");
 	<div class="col-md-6 col-md-offset-3">
 <p class="note">Form dengan tanda <span class="required">*</span> wajib diisi.</p>
 
+  <br>
 	<div class="form-group">
-      <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Kota *</label>
+      <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Provinsi *</label>
       <div class="col-sm-9">
         <?php
-        $opt = CHtml::listData(Kota::model()->findAll(),'id_kota','nama_kota');
+        $opt = CHtml::listData(Provinsi::model()->findAll(),'id_provinsi','name');
         echo $form->dropDownList($model,'id_kota',$opt,array('class'=>'form-control has-feedback-left','required'=>'required'));
         ?>
         <span class="fa fa-tasks form-control-feedback left" aria-hidden="true"></span>
@@ -57,6 +58,21 @@ $date = date("Y-m-d");
     </div>
   <div class="clearfix"></div>
   <br>
+
+  <div class="form-group">
+      <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Kota *</label>
+      <div class="col-sm-9">
+        <?php
+        $opt = CHtml::listData(Kabkota::model()->findAll(),'id_kabkota','name');
+        echo $form->dropDownList($model,'id_kota',$opt,array('class'=>'form-control has-feedback-left','required'=>'required'));
+        ?>
+        <span class="fa fa-tasks form-control-feedback left" aria-hidden="true"></span>
+      </div>
+      <?php echo $form->error($model,'id_kota'); ?>
+    </div>
+  <div class="clearfix"></div>
+  <br>
+
 
   <div class="form-group">
 		<label class="col-sm-3 controll-label no-padding-right" for="form-field-1">username *</label>

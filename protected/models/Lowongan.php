@@ -139,7 +139,7 @@ class Lowongan extends CActiveRecord
 	}
 
 	public function getAll(){
-		$sql = "SELECT lowongan.id_lowongan, lowongan.id_kategori, kategori.nama_kategori, lowongan.id_perusahaan, perusahaan.nama_perusahaan, lowongan.id_kota, kota.nama_kota, lowongan.id_jurusan, jurusan_pendidikan.nama_jurusan, lowongan.tgl_buat, lowongan.pekerjaan, lowongan.tipe_pekerjaan, lowongan.deskripsi, lowongan.persyaratan, lowongan.tawaran_gaji, lowongan.usia_max, lowongan.jenis_kelamin, lowongan.batas_lamaran, lowongan.status, lowongan.tgl_panggilan FROM lowongan INNER JOIN kategori, perusahaan, kota, jurusan_pendidikan WHERE lowongan.id_kategori = kategori.id_kategori AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lowongan.id_kota = kota.id_kota AND lowongan.id_jurusan = jurusan_pendidikan.id_jurusan ORDER BY lowongan.tgl_buat DESC;";
+		$sql = "SELECT lowongan.id_lowongan, lowongan.id_kategori, kategori.nama_kategori, lowongan.id_perusahaan, perusahaan.nama_perusahaan, lowongan.id_kota, tb_kabkota.name, lowongan.id_jurusan, jurusan_pendidikan.nama_jurusan, lowongan.tgl_buat, lowongan.pekerjaan, lowongan.tipe_pekerjaan, lowongan.deskripsi, lowongan.persyaratan, lowongan.tawaran_gaji, lowongan.usia_max, lowongan.jenis_kelamin, lowongan.batas_lamaran, lowongan.status, lowongan.tgl_panggilan FROM lowongan INNER JOIN kategori, perusahaan, tb_kabkota, jurusan_pendidikan WHERE lowongan.id_kategori = kategori.id_kategori AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lowongan.id_kota = tb_kabkota.id_kabkota AND lowongan.id_jurusan = jurusan_pendidikan.id_jurusan ORDER BY lowongan.tgl_buat DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -153,7 +153,7 @@ class Lowongan extends CActiveRecord
 		$today = $date;
 
 
-		$sql = "SELECT lowongan.id_lowongan, lowongan.id_kategori, kategori.nama_kategori, lowongan.id_perusahaan, perusahaan.nama_perusahaan, lowongan.id_kota, kota.nama_kota, lowongan.id_jurusan, jurusan_pendidikan.nama_jurusan, lowongan.tgl_buat, lowongan.pekerjaan, lowongan.tipe_pekerjaan, lowongan.deskripsi, lowongan.persyaratan, lowongan.tawaran_gaji, lowongan.usia_max, lowongan.jenis_kelamin, lowongan.batas_lamaran, lowongan.status, lowongan.tgl_panggilan FROM lowongan INNER JOIN kategori, perusahaan, kota, jurusan_pendidikan WHERE lowongan.id_kategori = kategori.id_kategori AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lowongan.id_kota = kota.id_kota AND lowongan.id_jurusan = jurusan_pendidikan.id_jurusan AND lowongan.id_jurusan = '$id_jurusan' AND lowongan.batas_lamaran >= '$today' ORDER BY lowongan.id_lowongan DESC;";
+		$sql = "SELECT lowongan.id_lowongan, lowongan.id_kategori, kategori.nama_kategori, lowongan.id_perusahaan, perusahaan.nama_perusahaan, lowongan.id_kota, tb_kabkota.name, lowongan.id_jurusan, jurusan_pendidikan.nama_jurusan, lowongan.tgl_buat, lowongan.pekerjaan, lowongan.tipe_pekerjaan, lowongan.deskripsi, lowongan.persyaratan, lowongan.tawaran_gaji, lowongan.usia_max, lowongan.jenis_kelamin, lowongan.batas_lamaran, lowongan.status, lowongan.tgl_panggilan FROM lowongan INNER JOIN kategori, perusahaan, tb_kabkota, jurusan_pendidikan WHERE lowongan.id_kategori = kategori.id_kategori AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lowongan.id_kota = tb_kabkota.id_kabkota AND lowongan.id_jurusan = jurusan_pendidikan.id_jurusan AND lowongan.id_jurusan = '$id_jurusan' AND lowongan.batas_lamaran >= '$today' ORDER BY lowongan.id_lowongan DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -162,13 +162,28 @@ class Lowongan extends CActiveRecord
 	}
 
 	public function getAllByPk($id){
-		$sql = "SELECT lowongan.id_lowongan, lowongan.id_kategori, kategori.nama_kategori, lowongan.id_perusahaan, perusahaan.nama_perusahaan, lowongan.id_kota, kota.nama_kota, lowongan.id_jurusan, jurusan_pendidikan.nama_jurusan, lowongan.tgl_buat, lowongan.pekerjaan, lowongan.tipe_pekerjaan, lowongan.deskripsi, lowongan.persyaratan, lowongan.tawaran_gaji, lowongan.usia_max, lowongan.jenis_kelamin, lowongan.batas_lamaran, lowongan.status, lowongan.tgl_panggilan FROM lowongan INNER JOIN kategori, perusahaan, kota, jurusan_pendidikan WHERE lowongan.id_kategori = kategori.id_kategori AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lowongan.id_kota = kota.id_kota AND lowongan.id_jurusan = jurusan_pendidikan.id_jurusan AND lowongan.id_perusahaan = $id ORDER BY lowongan.tgl_buat DESC;";
+		$sql = "SELECT lowongan.id_lowongan, lowongan.id_kategori, kategori.nama_kategori, lowongan.id_perusahaan, perusahaan.nama_perusahaan, lowongan.id_kota, tb_kabkota.name, lowongan.id_jurusan, jurusan_pendidikan.nama_jurusan, lowongan.tgl_buat, lowongan.pekerjaan, lowongan.tipe_pekerjaan, lowongan.deskripsi, lowongan.persyaratan, lowongan.tawaran_gaji, lowongan.usia_max, lowongan.jenis_kelamin, lowongan.batas_lamaran, lowongan.status, lowongan.tgl_panggilan FROM lowongan INNER JOIN kategori, perusahaan, tb_kabkota, jurusan_pendidikan WHERE lowongan.id_kategori = kategori.id_kategori AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lowongan.id_kota = tb_kabkota.id_kabkota AND lowongan.id_jurusan = jurusan_pendidikan.id_jurusan AND lowongan.id_perusahaan = $id ORDER BY lowongan.tgl_buat DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
 			->queryAll();
 		return $model;
 	}
+
+	public function kabkotaList()
+	{
+		$models = Kabkota::model()->findAll(array('condition' => 'id_provinsi = ' . $this->id_provinsi, 'order'=> 'name'));
+		foreach ($models as $model)
+			$_items[$model->id_kabkota] = $model->name;
+		return $_items;
+	}
+
+	// public function keldesaList(){
+	// 	$models = Keldesa::model()->findAll(array('condition' => 'id_kec = ' . $this->id_kec, 'order'=> 'nama'));
+	// 	foreach ($models as $model)
+	// 		$_items[$model->id_keldesa] = $model->nama;
+	// 	return $_items;
+	// }
 
 	/**
 	 * Returns the static model of the specified AR class.

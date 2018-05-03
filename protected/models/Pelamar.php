@@ -160,7 +160,7 @@ class Pelamar extends CActiveRecord
 	}
 
 	public function getAllValid(){
-		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, kota.nama_kota, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN kota, jurusan_pendidikan WHERE pelamar.id_kota = kota.id_kota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = 'pelamar' ORDER BY pelamar.tgl_daftar DESC;";
+		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = 'pelamar' ORDER BY pelamar.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -169,7 +169,7 @@ class Pelamar extends CActiveRecord
 	}
 
 	public function getAllNonValid(){
-		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, kota.nama_kota, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN kota, jurusan_pendidikan WHERE pelamar.id_kota = kota.id_kota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' ORDER BY pelamar.tgl_daftar DESC;";
+		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' ORDER BY pelamar.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -178,7 +178,7 @@ class Pelamar extends CActiveRecord
 	}
 
 	public function getNonValidByPk($id){
-		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, kota.nama_kota, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN kota, jurusan_pendidikan WHERE pelamar.id_kota = kota.id_kota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' AND pelamar.id_pelamar = '$id' ORDER BY pelamar.tgl_daftar DESC;";
+		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' AND pelamar.id_pelamar = '$id' ORDER BY pelamar.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)

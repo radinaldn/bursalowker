@@ -105,7 +105,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										<td><?php echo $no;?></td>
 										<td><?= $data['no_ktp']; ?></td> 
 										<td><?= $data['nama_lengkap']; ?></td>
-										<td><?= $data['nama_kota']; ?></td>
+										<td><?= $data['name']; ?></td>
 										<td><?= $data['nama_jurusan']; ?></td>
 										<td><?= $data['username']; ?></td>
 										<td><?= $data['photo']; ?></td>
@@ -181,7 +181,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										<td><?php echo $no;?></td>
 										<td><?= $data['no_ktp']; ?></td> 
 										<td><?= $data['nama_lengkap']; ?></td>
-										<td><?= $data['nama_kota']; ?></td>
+										<td><?= $data['name']; ?></td>
 										<td><?= $data['nama_jurusan']; ?></td>
 										<td><?= $data['username']; ?></td>
 										<td><?= $data['photo']; ?></td>

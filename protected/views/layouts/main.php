@@ -195,7 +195,7 @@ echo $tahun;
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/jurusanPendidikan/admin"><i class="fa fa-graduation-cap"></i>Jurusan Pendidikan</a></li>
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/kategori/admin"><i class="fa fa-file-text"></i>Kategori</a>
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/provinsi/admin"><i class="fa fa-map-marker"></i> Provinsi</a>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/kota/admin"><i class="fa fa-map-marker"></i> Kabupaten/Kota</a>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/kabkota/admin"><i class="fa fa-map-marker"></i> Kabupaten/Kota</a>
                   <li><a><i class="fa fa-users"></i>Pengguna <span class="fa fa-chevron-down"></span> </a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/pelamar/admin">Pelamar</a></li>
