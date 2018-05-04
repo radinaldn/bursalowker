@@ -196,7 +196,7 @@ class LowonganController extends Controller
 	public function actionSelectkabkota()
 	{
 		$id_fak = $_POST['Lowongan']['id_provinsi'];
-		$list = Kec::model()->findAll('id_provinsi = :id_fak', array(':id_fak'=>$id_fak));
+		$list = Kabkota::model()->findAll('id_provinsi = :id_fak', array(':id_fak'=>$id_fak));
 		$list = CHtml::listData($list,'id_kabkota','name');
 		echo CHtml::tag('option',array('value'=>''),'-- Pilih Kabupaten/Kota --', true);
 

@@ -32,7 +32,7 @@ class LamaranController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','pengajuan','seleksi','lamaranSaya','terima','tolak','laporan'),
+				'actions'=>array('create','update','pengajuan','seleksi','lamaranSaya','terima','tolak','laporan','cetak'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -401,6 +401,66 @@ class LamaranController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
+	}
+
+	public function actionCetak()
+	{
+		require_once Yii::app()->basePath . '/extensions/pdf/fpdf.php';
+
+		$model = Lamaran::model()->getAllTerima();
+
+		$pdf = new FPDF("L","cm","A4");
+
+$pdf->SetMargins(1.5,1,1);
+$pdf->AliasNbPages();
+$pdf->AddPage();
+$pdf->SetFont('Times','B',11);
+$pdf->Image(Yii::app()->basePath . '/extensions/pdf/logo/pekanbaru_logo_100px.png',1,1);
+$pdf->SetX(4);            
+$pdf->MultiCell(19.5,0.5,'DINAS TENAGA KERJA DAN TRANSMIGRASI PROVINSI RIAU',0,'L');
+$pdf->SetX(4);
+$pdf->MultiCell(19.5,0.5,'Telpon : (0761) 22285',0,'L');    
+$pdf->SetFont('Arial','B',10);
+$pdf->SetX(4);
+$pdf->MultiCell(19.5,0.5,'Jl. Pepaya No. 57-59 · (0761) 22285',0,'L');
+$pdf->SetX(4);
+$pdf->MultiCell(19.5,0.5,'website : http://disnakertrans.riau.go.id/bursa-lowker/ email : dinaskertrans@riau.go.id',0,'L');
+$pdf->Line(1,3.1,28.5,3.1);
+$pdf->SetLineWidth(0.1);      
+$pdf->Line(1,3.2,28.5,3.2);   
+$pdf->SetLineWidth(0);
+$pdf->ln(1);
+$pdf->SetFont('Arial','B',14);
+$pdf->Cell(25.5,0.7,"Rekap Data Lamaran",0,10,'C');
+$pdf->ln(1);
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(5,0.7,"Di cetak pada : ".date("D-d/m/Y"),0,0,'C');
+$pdf->ln(1);
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(1, 0.8, 'No', 1, 0, 'C');
+$pdf->Cell(5, 0.8, 'Nama Pelamar', 1, 0, 'C');
+$pdf->Cell(4.5, 0.8, 'Lowongan', 1, 0, 'C');
+$pdf->Cell(6, 0.8, 'Perusahaan', 1, 0, 'C');
+$pdf->Cell(6, 0.8, 'Tanggal Lamar', 1, 0, 'C');
+$pdf->Cell(4.5, 0.8, 'Tanggal Panggilan', 1, 1, 'C');
+$pdf->SetFont('Arial','',10);
+$no=1;
+
+		 foreach ($model as $data) {
+		 	$pdf->Cell(1, 0.8, $no , 1, 0, 'C');
+	$pdf->Cell(5, 0.8, $data['nama_lengkap'],1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $data['pekerjaan'], 1, 0,'C');
+	$pdf->Cell(6, 0.8, $data['nama_perusahaan'], 1, 0,'C');
+	$pdf->Cell(6, 0.8, $data['tgl_lamar'],1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $data['tgl_panggilan'],1, 1, 'C');
+
+	$no++;
+	
+	}
+
+	$pdf->Output("laporan_surat.pdf","I");
+
+	
 	}
 
 	/**

@@ -94,7 +94,6 @@ $date = date("Y-m-d");
      'url'=>CController::createUrl('lowongan/selectkabkota'), //selectjur adalah actionSelectkec di SaksiController.
      'update'=>'#'.CHtml::activeId($model,'id_kabkota'), //jurusan_id = field jurusan_id
      'beforeSend'=>'function() { //Penting!! agar setiap ganti pilihan kabkota, maka kec dan keldesa akan ikut terupdate, jadi kosong.
-       $("#Saksi_jurusan_id").find("option").remove();
        $("#Saksi_prodi_id").find("option").remove();
      }', //Bila tidak menggunakan ini, maka yg terupdate hanya jurusan (bawaan 'update').
    )
@@ -102,7 +101,7 @@ $date = date("Y-m-d");
  );
  ?>
  <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
- <?php echo $form->error($model,'id_kabkota'); ?>
+ <?php echo $form->error($model,'id_provinsi'); ?>
 </div>
 <div class="clearfix"></div>
 <br>
@@ -111,7 +110,7 @@ $date = date("Y-m-d");
  <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Kabupaten/Kota *</label>
  <div class="col-sm-9">
  <?php echo $form->dropDownList($model,'id_kabkota',
- (!$model->isNewRecord) ? $model->kabkotadesaList() :array(),
+ (!$model->isNewRecord) ? $model->kabkotaList() :array(),
  array(
   'required'=>'required',
   'class'=>'form-control has-feedback-left',
@@ -119,7 +118,7 @@ $date = date("Y-m-d");
  )
  ); ?> 
  <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
- <?php echo $form->error($model,'id__keldesa'); ?>
+ <?php echo $form->error($model,'id_kabkota'); ?>
 </div>
 <div class="clearfix"></div>
 <br>

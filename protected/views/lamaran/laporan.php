@@ -53,8 +53,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 				</div>
 					<div class="col-md-6 text-right">
 
-									<!-- <i class="fa fa-plus m-right-xs"></i>
-                                    <?php echo CHtml::Button('Tambah Perusahaan',array('onClick'=>"location='create'", 'class'=>'btn btn-primary')); ?> -->
+								
+
+									<i class="fa fa-plus m-right-xs"></i>
+                                    <?php echo CHtml::Button('Cetak',array('onClick'=>"location='cetak'", 'class'=>'btn btn-primary')); ?> 
+
+                            </div>
 
                             </div>
 

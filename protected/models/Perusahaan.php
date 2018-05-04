@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'perusahaan':
  * @property integer $id_perusahaan
- * @property integer $id_kota
+ * @property integer $id_kabkota
  * @property string $username
  * @property string $password
  * @property string $tgl_daftar
@@ -38,14 +38,14 @@ class Perusahaan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_kota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp', 'required'),
-			array('id_kota', 'numerical', 'integerOnly'=>true),
+			array('id_kabkota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp', 'required'),
+			array('id_kabkota', 'numerical', 'integerOnly'=>true),
 			array('username, nama_perusahaan, situs', 'length', 'max'=>40),
 			array('no_telp, no_hp', 'length', 'max'=>12),
 			array('nama_kontak', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_perusahaan, id_kota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp', 'safe', 'on'=>'search'),
+			array('id_perusahaan, id_kabkota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +58,7 @@ class Perusahaan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'lowongans' => array(self::HAS_MANY, 'Lowongan', 'id_perusahaan'),
-			'idKota' => array(self::BELONGS_TO, 'Kota', 'id_kota'),
+			'idKota' => array(self::BELONGS_TO, 'Kabkoota', 'id_kabkota'),
 		);
 	}
 
@@ -69,7 +69,7 @@ class Perusahaan extends CActiveRecord
 	{
 		return array(
 			'id_perusahaan' => 'Id Perusahaan',
-			'id_kota' => 'Id Kota',
+			'id_kabkota' => 'Id Kota',
 			'username' => 'username',
 			'password' => 'Password',
 			'tgl_daftar' => 'Tgl Daftar',
@@ -101,7 +101,7 @@ class Perusahaan extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_perusahaan',$this->id_perusahaan);
-		$criteria->compare('id_kota',$this->id_kota);
+		$criteria->compare('id_kabkota',$this->id_kabkota);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('tgl_daftar',$this->tgl_daftar,true);

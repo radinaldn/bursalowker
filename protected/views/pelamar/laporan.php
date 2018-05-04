@@ -61,14 +61,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			<!-- <div class="panel"> -->
 				<div class="">
 					<div class="col-md-6">
-					<h3><i class="fa fa-table"></i> Laporan Pelamar <small> Bursa Lowker </small></h3>
+					<h3><i class="fa fa-table"></i> Pelamar (Tervalidasi<i class="fa fa-check"></i>) <small> Bursa Lowker </small></h3>
 				</div>
 					<div class="col-md-6 text-right">
 
-									<!-- <i class="fa fa-plus m-right-xs"></i>
-                                    <?php echo CHtml::Button('Tambah Pelamar',array('onClick'=>"location='create'", 'class'=>'btn btn-primary')); ?> -->
+									<i class="fa fa-plus m-right-xs"></i>
+                                    <?php echo CHtml::Button('Cetak',array('onClick'=>"location='cetak'", 'class'=>'btn btn-primary')); ?> 
 
                             </div>
+
 
 					
 					
@@ -77,9 +78,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					<table id="example" class="table table-striped jambo_table bulk-action" cellspacing="0" width="100%">
 						<br>
 						<div class="x_title">
-						<div class="col-md-6">
-						<button>asd</button>
-						</div>
+						
 							<br>
 					</div>
 						<thead>

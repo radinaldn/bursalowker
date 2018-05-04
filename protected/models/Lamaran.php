@@ -121,7 +121,7 @@ class Lamaran extends CActiveRecord
 	}
 
 	public function getAllTerima(){
-		$sql = "SELECT lamaran.id_lamaran, lamaran.id_pelamar, pelamar.nama_lengkap, lamaran.id_lowongan, lowongan.pekerjaan, perusahaan.nama_perusahaan, lamaran.tgl_lamar, lamaran.lampiran, lamaran.status FROM lamaran INNER JOIN pelamar, lowongan, perusahaan WHERE lamaran.id_pelamar = pelamar.id_pelamar AND lamaran.id_lowongan = lowongan.id_lowongan AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lamaran.status = 'Diterima' ORDER BY lamaran.tgl_lamar DESC";
+		$sql = "SELECT lamaran.id_lamaran, lamaran.id_pelamar, pelamar.nama_lengkap, lamaran.id_lowongan, lowongan.pekerjaan, lowongan.tgl_panggilan, perusahaan.nama_perusahaan, lamaran.tgl_lamar, lamaran.lampiran, lamaran.status FROM lamaran INNER JOIN pelamar, lowongan, perusahaan WHERE lamaran.id_pelamar = pelamar.id_pelamar AND lamaran.id_lowongan = lowongan.id_lowongan AND lowongan.id_perusahaan = perusahaan.id_perusahaan AND lamaran.status = 'Diterima' ORDER BY lamaran.tgl_lamar DESC";
 
 		$model = Yii::app()->db
 			->createCommand($sql)

@@ -146,7 +146,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										</td>
 										<td>
 										<!--<div class="hidden-sm hidden-xs action-buttons">-->
-											<a title="Seleksi pelamar" class="btn btn-warning btn-xs" href="<?= Yii::app()->request->baseUrl ?>/index.php/lowongan/viewPerusahaan/<?= $data['id_lowongan']; ?>" role="button"><i class="fa fa-pencil-square-o"></i> Seleksi <?= $tot_lamaran; ?> pelamar</a>
+											<a title="Seleksi pelamar" class="btn btn-warning btn-xs" href="<?= Yii::app()->request->baseUrl ?>/index.php/lowongan/viewPerusahaan/<?= $data['id_lowongan']; ?>" role="button"><i class="fa fa-pencil-square-o"></i> Seleksi pelamar</a>
 											<!-- <a class="btn btn-warning btn-xs" href="update/<?= $data['id_lowongan']; ?>" role="button"><i class="fa fa-pencil"></i></a> -->
 											<a class="btn btn-danger btn-xs" href="<?= Yii::app()->request->baseUrl; ?>/index.php/lowongan/delete/<?= $data['id_lowongan']; ?>" role="button"  onclick="return confirm('Anda yakin ingin menghapus lowongan #<?php echo $data['id_lowongan'];?>? Semua lamaran dari lowongan ini juga ikut terhapus')"><i class="fa fa-trash"></i> Hapus</a>
 											<!--</div>-->
@@ -174,7 +174,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 // 		'id_lowongan',
 // 		'id_kategori',
 // 		'id_perusahaan',
-// 		'id_kota',
+// 		'id_kabkota',
 // 		'id_jurusan',
 // 		'tgl_buat',
 // 		/*
