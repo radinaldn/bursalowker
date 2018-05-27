@@ -4,14 +4,11 @@
  * This is the model class for table "tb_kabkota".
  *
  * The followings are the available columns in table 'tb_kabkota':
- * @property integer $id_kabkota
+ * @property string $id_kabkota
  * @property string $id_provinsi
  * @property string $name
  *
  * The followings are the available model relations:
- * @property Lowongan[] $lowongans
- * @property Pelamar[] $pelamars
- * @property Perusahaan[] $perusahaans
  * @property TbProvinsi $idProvinsi
  */
 class Kabkota extends CActiveRecord
@@ -33,7 +30,7 @@ class Kabkota extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_kabkota, id_provinsi, name', 'required'),
-			array('id_kabkota', 'numerical', 'integerOnly'=>true),
+			array('id_kabkota', 'length', 'max'=>5),
 			array('id_provinsi', 'length', 'max'=>2),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -50,9 +47,6 @@ class Kabkota extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'lowongans' => array(self::HAS_MANY, 'Lowongan', 'id_kota'),
-			'pelamars' => array(self::HAS_MANY, 'Pelamar', 'id_kota'),
-			'perusahaans' => array(self::HAS_MANY, 'Perusahaan', 'id_kota'),
 			'idProvinsi' => array(self::BELONGS_TO, 'TbProvinsi', 'id_provinsi'),
 		);
 	}
@@ -87,7 +81,7 @@ class Kabkota extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_kabkota',$this->id_kabkota);
+		$criteria->compare('id_kabkota',$this->id_kabkota,true);
 		$criteria->compare('id_provinsi',$this->id_provinsi,true);
 		$criteria->compare('name',$this->name,true);
 

@@ -4068,3 +4068,60 @@ Stack trace:
 REQUEST_URI=/bursa-lowker/index.php/provinsi/create
 HTTP_REFERER=http://localhost/bursa-lowker/index.php/provinsi/create
 ---
+2018/05/27 10:13:44 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in /var/www/html/bursa-lowker/framework/web/CController.php:1121
+Stack trace:
+#0 /var/www/html/bursa-lowker/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 /var/www/html/bursa-lowker/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#2 /var/www/html/bursa-lowker/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/bursa-lowker/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/bursa-lowker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/bursa-lowker/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/bursa-lowker/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/bursa-lowker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/bursa-lowker/framework/web/CWebApplication.php(282): CController->run('delete')
+#9 /var/www/html/bursa-lowker/framework/web/CWebApplication.php(141): CWebApplication->runController('provinsi/delete')
+#10 /var/www/html/bursa-lowker/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /var/www/html/bursa-lowker/index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/bursa-lowker/index.php/provinsi/delete/98
+HTTP_REFERER=http://localhost/bursa-lowker/index.php/provinsi/admin
+---
+2018/05/27 10:14:12 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in /var/www/html/bursa-lowker/framework/web/auth/CAccessControlFilter.php:183
+Stack trace:
+#0 /var/www/html/bursa-lowker/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/html/bursa-lowker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/html/bursa-lowker/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#3 /var/www/html/bursa-lowker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/html/bursa-lowker/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/html/bursa-lowker/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/html/bursa-lowker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/html/bursa-lowker/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /var/www/html/bursa-lowker/framework/web/CWebApplication.php(141): CWebApplication->runController('kabkota/admin')
+#9 /var/www/html/bursa-lowker/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/html/bursa-lowker/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/bursa-lowker/index.php/kabkota/admin
+HTTP_REFERER=http://localhost/bursa-lowker/index.php/provinsi/admin
+---
+2018/05/27 10:14:25 [error] [php] Trying to get property of non-object (/var/www/html/bursa-lowker/protected/views/kabkota/admin.php:88)
+Stack trace:
+#0 /var/www/html/bursa-lowker/framework/web/CController.php(872): KabkotaController->renderFile()
+#1 /var/www/html/bursa-lowker/framework/web/CController.php(785): KabkotaController->renderPartial()
+#2 /var/www/html/bursa-lowker/protected/controllers/KabkotaController.php(142): KabkotaController->render()
+#3 /var/www/html/bursa-lowker/framework/web/actions/CInlineAction.php(49): KabkotaController->actionAdmin()
+#4 /var/www/html/bursa-lowker/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/html/bursa-lowker/framework/web/filters/CFilterChain.php(134): KabkotaController->runAction()
+#6 /var/www/html/bursa-lowker/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/html/bursa-lowker/framework/web/CController.php(1148): CAccessControlFilter->filter()
+#8 /var/www/html/bursa-lowker/framework/web/filters/CInlineFilter.php(58): KabkotaController->filterAccessControl()
+#9 /var/www/html/bursa-lowker/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#10 /var/www/html/bursa-lowker/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/html/bursa-lowker/framework/web/CController.php(265): KabkotaController->runActionWithFilters()
+#12 /var/www/html/bursa-lowker/framework/web/CWebApplication.php(282): KabkotaController->run()
+#13 /var/www/html/bursa-lowker/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/html/bursa-lowker/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /var/www/html/bursa-lowker/index.php(14): CWebApplication->run()
+REQUEST_URI=/bursa-lowker/index.php/kabkota/admin
+in /var/www/html/bursa-lowker/protected/views/kabkota/admin.php (88)
+in /var/www/html/bursa-lowker/protected/controllers/KabkotaController.php (142)
+in /var/www/html/bursa-lowker/index.php (14)

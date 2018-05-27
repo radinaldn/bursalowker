@@ -15,7 +15,7 @@ class KabkotaController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+		//	'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -139,7 +139,6 @@ class KabkotaController extends Controller
 			$db->attributes=$_GET['Kabkota'];
 
 		$model = Kabkota::model()->findAll();
-
 		$this->render('admin',array(
 			'model'=>$model,
 		));

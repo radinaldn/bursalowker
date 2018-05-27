@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 26, 2018 at 11:12 AM
+-- Generation Time: May 27, 2018 at 10:17 AM
 -- Server version: 10.1.30-MariaDB-0ubuntu0.17.10.1
 -- PHP Version: 7.1.15-0ubuntu0.17.10.1
 
@@ -48,7 +48,8 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama`, `tgl_daftar`, `
 (10, 'testes', '$2a$10$fpFOXN4VQn1WVJiGT7NmUObi1tyHhLQmJkc/PzW2lgRmicX9VIOny', 'tes aja', '2018-03-23', 'admin'),
 (11, 'amin', '$2a$10$RliRcE41w3oiHOkRBTSvFetgapMAPZFZ/FHKY/jItEJDTNmadp3RK', 'Aminn', '2018-04-10', 'admin'),
 (12, 'salam', '$2a$10$bnYr2SDNeX1zRgG0pfSPbOOzGk75SWs0NBxFs76FTq/dGIWpj/fcG', 'M salam harahap', '2018-04-10', 'admin'),
-(13, 'dian', '$2a$10$.BWllvkNKIuXcN1zOy.8WONd2uh7qffflBIQGrJosBsBxz/4eGEWS', 'Dian Afrian', '2018-05-10', 'admin');
+(13, 'dian', '$2a$10$.BWllvkNKIuXcN1zOy.8WONd2uh7qffflBIQGrJosBsBxz/4eGEWS', 'Dian Afrian', '2018-05-10', 'admin'),
+(14, 'dinas', '$2a$10$/ZJyTVTl/xKaqTsFwcvGI.MJWDUS1vWTPeVHtVS2AyVkQUkMHsyTu', 'orang dinas', '2018-05-27', 'admin');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,8 @@ INSERT INTO `jurusan_pendidikan` (`id_jurusan`, `nama_jurusan`) VALUES
 (27, 'Transportasi'),
 (28, 'Telekomunikasi'),
 (29, 'Ilmu Komputer'),
-(30, 'Teknik mesin mantap');
+(30, 'Teknik mesin mantap'),
+(31, 'Teknik Industri');
 
 -- --------------------------------------------------------
 
@@ -125,7 +127,8 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 (10, 'Laboratorium'),
 (11, 'Layanan Pelanggan'),
 (12, 'Lainnya'),
-(13, 'Teknologi kimia mantap');
+(13, 'Teknologi kimia mantap'),
+(14, 'Industrial');
 
 -- --------------------------------------------------------
 
@@ -318,7 +321,10 @@ CREATE TABLE `lamaran` (
 
 INSERT INTO `lamaran` (`id_lamaran`, `id_pelamar`, `id_lowongan`, `tgl_lamar`, `lampiran`, `status`) VALUES
 (1, 1, 1, '2018-05-01', '1-1.zip', 'Diterima'),
-(2, 2, 1, '2018-05-01', '2-1.zip', 'Diterima');
+(2, 2, 1, '2018-05-01', '2-1.zip', 'Diterima'),
+(3, 1, 2, '2018-05-26', '1-2.zip', 'Diterima'),
+(4, 3, 4, '2018-05-27', '3-4.zip', 'Ditolak'),
+(5, 3, 3, '2018-05-27', '3-3.zip', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -352,7 +358,9 @@ CREATE TABLE `lowongan` (
 
 INSERT INTO `lowongan` (`id_lowongan`, `id_kategori`, `id_perusahaan`, `id_provinsi`, `id_kabkota`, `id_jurusan`, `tgl_buat`, `pekerjaan`, `tipe_pekerjaan`, `deskripsi`, `persyaratan`, `tawaran_gaji`, `usia_max`, `jenis_kelamin`, `batas_lamaran`, `status`, `tgl_panggilan`) VALUES
 (1, 12, 1033, '', '1471', 4, '2018-05-01', 'Programmer', 'Kontrak', 'Dabsdbadbasjdbasdsa bb b ab jdb ab bjh', 'S1, pengalaman 2 tahun.', '100.000.000 - 200.000.000', '30', 'L', '2018-05-02', 'Publik', '2018-05-03'),
-(2, 1, 1033, '14', '1471', 4, '2018-05-04', 'Programmer PKU', 'Kontrak', 'DIbuka blabalblabla', 'senang sekali', '1010101001010', '30', 'L', '2018-05-31', 'Publik', '2018-06-01');
+(2, 1, 1033, '14', '1471', 4, '2018-05-04', 'Programmer PKU', 'Kontrak', 'DIbuka blabalblabla', 'senang sekali', '1010101001010', '30', 'L', '2018-05-31', 'Publik', '2018-06-01'),
+(3, 1, 1033, '11', '1102', 30, '2018-05-26', 'amsdn', 'ansdkjn', 'askjdnkj', 'asdnkjn', 'asdjkn', '30', 'L', '2018-05-27', 'Publik', '2018-05-27'),
+(4, 12, 1034, '31', '3171', 30, '2018-05-27', 'Montir', 'Kontrak', 'Dasdibaidbiasdiubbab iab isbdi a', 'S1, pengalaman 2 tahun.', '100.000.000 - 200.000.000', '30', 'L', '2018-06-03', 'Publik', '2018-05-07');
 
 -- --------------------------------------------------------
 
@@ -372,7 +380,10 @@ CREATE TABLE `notifikasi_lamaran` (
 
 INSERT INTO `notifikasi_lamaran` (`id_lamaran`, `waktu`, `sudah_dibaca`) VALUES
 (1, '2018-05-01 12:13:39', 0),
-(2, '2018-05-01 12:23:20', 0);
+(2, '2018-05-01 12:23:20', 0),
+(3, '2018-05-26 11:18:34', 0),
+(4, '2018-05-27 09:43:14', 0),
+(5, '2018-05-27 09:45:20', 0);
 
 -- --------------------------------------------------------
 
@@ -382,7 +393,8 @@ INSERT INTO `notifikasi_lamaran` (`id_lamaran`, `waktu`, `sudah_dibaca`) VALUES
 
 CREATE TABLE `pelamar` (
   `id_pelamar` int(5) NOT NULL,
-  `id_kota` varchar(5) NOT NULL,
+  `id_provinsi` int(11) DEFAULT NULL,
+  `id_kabkota` varchar(5) NOT NULL,
   `id_jurusan` int(5) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -402,9 +414,10 @@ CREATE TABLE `pelamar` (
 -- Dumping data for table `pelamar`
 --
 
-INSERT INTO `pelamar` (`id_pelamar`, `id_kota`, `id_jurusan`, `username`, `password`, `no_ktp`, `tgl_daftar`, `nama_lengkap`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `no_hp`, `photo`, `level`, `id_telegram`) VALUES
-(1, '1471', 4, 'iyall', '$2a$10$/A5YMdMYQr9znoHjwQzbaeAeUtPrkk2ZXLPIP4t7bNuGVUWS/bt9C', '123', '2018-05-01', 'Masrial', 'L', '1990-12-08', 'Jl Garuda Sakti', '081300000000', 'qrcode.jpeg', 'pelamar', 386016720),
-(2, '1409', 4, 'amin', '$2a$10$ObcBXNmohTNn8zUrBtifguTI1H7bfG275UK.Q8fxwHZ19zq9ArvSW', '11111111111111', '2018-05-01', 'amminnn', 'L', '1996-01-01', 'Jl Garuda Sakti', '11221212121', 'user.png', 'pelamar', 168838163);
+INSERT INTO `pelamar` (`id_pelamar`, `id_provinsi`, `id_kabkota`, `id_jurusan`, `username`, `password`, `no_ktp`, `tgl_daftar`, `nama_lengkap`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `no_hp`, `photo`, `level`, `id_telegram`) VALUES
+(1, NULL, '1471', 4, 'iyall', '$2a$10$/A5YMdMYQr9znoHjwQzbaeAeUtPrkk2ZXLPIP4t7bNuGVUWS/bt9C', '123', '2018-05-01', 'Masrial', 'L', '1990-12-08', 'Jl Garuda Sakti', '081300000000', 'qrcode.jpeg', 'pelamar', 386016720),
+(2, NULL, '1409', 4, 'amin', '$2a$10$ObcBXNmohTNn8zUrBtifguTI1H7bfG275UK.Q8fxwHZ19zq9ArvSW', '11111111111111', '2018-05-01', 'amminnn', 'L', '1996-01-01', 'Jl Garuda Sakti', '11221212121', 'user.png', 'pelamar', 168838163),
+(3, NULL, '1112', 30, 'afrian', '$2a$10$hnNDnExg7HJJtXzGdED51.9Bit6BM8dDpZyF5LSSC9RW2DXQt5J2S', '123211313', '2018-05-27', 'afrianisra', 'L', '1990-12-08', 'Jl Garuda Sakti', '081300000000', 'Screenshot from 2018-05-26 14-12-07.png', 'pelamar', 168838163);
 
 -- --------------------------------------------------------
 
@@ -414,6 +427,7 @@ INSERT INTO `pelamar` (`id_pelamar`, `id_kota`, `id_jurusan`, `username`, `passw
 
 CREATE TABLE `perusahaan` (
   `id_perusahaan` int(5) NOT NULL,
+  `id_provinsi` int(11) DEFAULT NULL,
   `id_kabkota` varchar(5) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -431,8 +445,9 @@ CREATE TABLE `perusahaan` (
 -- Dumping data for table `perusahaan`
 --
 
-INSERT INTO `perusahaan` (`id_perusahaan`, `id_kabkota`, `username`, `password`, `tgl_daftar`, `nama_perusahaan`, `alamat`, `no_telp`, `situs`, `nama_kontak`, `no_hp`, `level`) VALUES
-(1033, '1471', 'iyall', '$2a$10$cbP8TJVyKcgY.kj6MIh4gukuq27z41/xTXTSrG1gJSPIdWvQKgame', '2018-05-01', 'PT Iyall', 'Jl Mantap', '0761123456', 'www.mantap.com', 'Masmantap', '081234567890', 'perusahaan');
+INSERT INTO `perusahaan` (`id_perusahaan`, `id_provinsi`, `id_kabkota`, `username`, `password`, `tgl_daftar`, `nama_perusahaan`, `alamat`, `no_telp`, `situs`, `nama_kontak`, `no_hp`, `level`) VALUES
+(1033, NULL, '1471', 'iyall', '$2a$10$cbP8TJVyKcgY.kj6MIh4gukuq27z41/xTXTSrG1gJSPIdWvQKgame', '2018-05-01', 'PT Iyall', 'Jl Mantap', '0761123456', 'www.mantap.com', 'Masmantap', '081234567890', 'perusahaan'),
+(1034, NULL, '1409', 'kartik', '$2a$10$cbP8TJVyKcgY.kj6MIh4gukuq27z41/xTXTSrG1gJSPIdWvQKgame', '2018-05-27', 'PT Kartik', 'Jl. Kubu', '0761123456', 'www.mantap.com', 'dian', '081234567890', 'perusahaan');
 
 -- --------------------------------------------------------
 
@@ -923,6 +938,7 @@ INSERT INTO `tb_kabkota` (`id_kabkota`, `id_provinsi`, `name`) VALUES
 ('8208', '82', 'KABUPATEN PULAU TALIABU'),
 ('8271', '82', 'KOTA TERNATE'),
 ('8272', '82', 'KOTA TIDORE KEPULAUAN'),
+('8801', '88', 'baru baru'),
 ('9101', '91', 'KABUPATEN FAKFAK'),
 ('9102', '91', 'KABUPATEN KAIMANA'),
 ('9103', '91', 'KABUPATEN TELUK WONDAMA'),
@@ -964,8 +980,7 @@ INSERT INTO `tb_kabkota` (`id_kabkota`, `id_provinsi`, `name`) VALUES
 ('9434', '94', 'KABUPATEN DOGIYAI'),
 ('9435', '94', 'KABUPATEN INTAN JAYA'),
 ('9436', '94', 'KABUPATEN DEIYAI'),
-('9471', '94', 'KOTA JAYAPURA'),
-('9899', '98', 'as');
+('9471', '94', 'KOTA JAYAPURA');
 
 -- --------------------------------------------------------
 
@@ -1015,9 +1030,9 @@ INSERT INTO `tb_provinsi` (`id_provinsi`, `name`) VALUES
 ('76', 'SULAWESI BARAT'),
 ('81', 'MALUKU'),
 ('82', 'MALUKU UTARA'),
+('88', 'Baru'),
 ('91', 'PAPUA BARAT'),
-('94', 'PAPUA'),
-('98', 'asd');
+('94', 'PAPUA');
 
 --
 -- Indexes for dumped tables
@@ -1078,7 +1093,7 @@ ALTER TABLE `notifikasi_lamaran`
 ALTER TABLE `pelamar`
   ADD PRIMARY KEY (`id_pelamar`),
   ADD UNIQUE KEY `email` (`username`),
-  ADD KEY `id_kota` (`id_kota`),
+  ADD KEY `id_kota` (`id_kabkota`),
   ADD KEY `id_bidang` (`id_jurusan`);
 
 --
@@ -1110,17 +1125,17 @@ ALTER TABLE `tb_provinsi`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jurusan_pendidikan`
 --
 ALTER TABLE `jurusan_pendidikan`
-  MODIFY `id_jurusan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_jurusan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_kategori` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `kota`
 --
@@ -1130,22 +1145,22 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `lamaran`
 --
 ALTER TABLE `lamaran`
-  MODIFY `id_lamaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_lamaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `lowongan`
 --
 ALTER TABLE `lowongan`
-  MODIFY `id_lowongan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_lowongan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pelamar`
 --
 ALTER TABLE `pelamar`
-  MODIFY `id_pelamar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelamar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `perusahaan`
 --
 ALTER TABLE `perusahaan`
-  MODIFY `id_perusahaan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1034;
+  MODIFY `id_perusahaan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1035;
 --
 -- Constraints for dumped tables
 --

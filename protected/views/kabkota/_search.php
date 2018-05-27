@@ -13,7 +13,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'id_kabkota'); ?>
-		<?php echo $form->textField($model,'id_kabkota'); ?>
+		<?php echo $form->textField($model,'id_kabkota',array('size'=>5,'maxlength'=>5)); ?>
 	</div>
 
 	<div class="row">
