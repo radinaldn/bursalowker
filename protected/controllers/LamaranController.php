@@ -407,7 +407,7 @@ class LamaranController extends Controller
 	{
 		require_once Yii::app()->basePath . '/extensions/pdf/fpdf.php';
 
-		$model = Lamaran::model()->getAllTerima();
+		$model = Lamaran::model()->getAll();
 
 		$pdf = new FPDF("L","cm","A4");
 
@@ -440,9 +440,10 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'No', 1, 0, 'C');
 $pdf->Cell(5, 0.8, 'Nama Pelamar', 1, 0, 'C');
 $pdf->Cell(4.5, 0.8, 'Lowongan', 1, 0, 'C');
-$pdf->Cell(6, 0.8, 'Perusahaan', 1, 0, 'C');
-$pdf->Cell(6, 0.8, 'Tanggal Lamar', 1, 0, 'C');
-$pdf->Cell(4.5, 0.8, 'Tanggal Panggilan', 1, 1, 'C');
+$pdf->Cell(4.5, 0.8, 'Perusahaan', 1, 0, 'C');
+$pdf->Cell(4.5, 0.8, 'Tanggal Lamar', 1, 0, 'C');
+$pdf->Cell(3, 0.8, 'Status', 1, 0, 'C');
+        $pdf->Cell(4.5, 0.8, 'Tanggal Panggilan', 1, 1, 'C');
 $pdf->SetFont('Arial','',10);
 $no=1;
 
@@ -450,8 +451,9 @@ $no=1;
 		 	$pdf->Cell(1, 0.8, $no , 1, 0, 'C');
 	$pdf->Cell(5, 0.8, $data['nama_lengkap'],1, 0, 'C');
 	$pdf->Cell(4.5, 0.8, $data['pekerjaan'], 1, 0,'C');
-	$pdf->Cell(6, 0.8, $data['nama_perusahaan'], 1, 0,'C');
-	$pdf->Cell(6, 0.8, $data['tgl_lamar'],1, 0, 'C');
+	$pdf->Cell(4.5, 0.8, $data['nama_perusahaan'], 1, 0,'C');
+	$pdf->Cell(4.5, 0.8, $data['tgl_lamar'],1, 0, 'C');
+	$pdf->Cell(3, 0.8, $data['status'],1, 0, 'C');
 	$pdf->Cell(4.5, 0.8, $data['tgl_panggilan'],1, 1, 'C');
 
 	$no++;

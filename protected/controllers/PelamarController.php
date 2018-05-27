@@ -28,7 +28,7 @@ class PelamarController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','register'),
+				'actions'=>array('index','view','register','selectkabkota'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -296,6 +296,18 @@ $no=1;
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+
+    public function actionSelectkabkota()
+    {
+        $id_fak = $_POST['Pelamar']['id_provinsi'];
+        $list = Kabkota::model()->findAll('id_provinsi = :id_fak', array(':id_fak'=>$id_fak));
+        $list = CHtml::listData($list,'id_kabkota','name');
+        echo CHtml::tag('option',array('value'=>''),'-- Pilih Kabupaten/Kota --', true);
+
+        foreach($list as $value=>$nama){
+            echo CHtml::tag('option',array('value'=>$value),CHtml::encode($nama), true);
+        }
+    }
 
 	/**
 	 * Performs the AJAX validation.

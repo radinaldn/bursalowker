@@ -478,7 +478,8 @@ echo $tahun;
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/WebUser/update/"> Profile</a></li>
+
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/perusahaan/<?= Yii::app()->session->get('id_perusahaan')?>"> Profile</a></li>
                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/home/help">Help</a></li>
                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
@@ -701,7 +702,8 @@ echo $tahun;
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/WebUser/update/"> Profile</a></li>
+
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/pelamar/<?= Yii::app()->session->get('id_pelamar') ?>"> Profile</a></li>
                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/home/help">Help</a></li>
                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>

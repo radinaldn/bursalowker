@@ -28,7 +28,7 @@ class PerusahaanController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('register','view'),
+				'actions'=>array('register','view','selectkabkota'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -262,7 +262,7 @@ $no=1;
 	$pdf->Cell(7, 0.8, $data['nama_perusahaan'],1, 0, 'C');
 	$pdf->Cell(7, 0.8, $data['name'], 1, 0,'C');
 	$pdf->Cell(6, 0.8, $data['alamat'], 1, 0,'C');
-	$pdf->Cell(6, 0.8, $data['no_telp'],1, 0, 'C');
+	$pdf->Cell(6, 0.8, $data['no_telp'],1, 1, 'C');
 
 
 	$no++;
@@ -273,6 +273,18 @@ $no=1;
 
 	
 	}
+
+    public function actionSelectkabkota()
+    {
+        $id_fak = $_POST['Perusahaan']['id_provinsi'];
+        $list = Kabkota::model()->findAll('id_provinsi = :id_fak', array(':id_fak'=>$id_fak));
+        $list = CHtml::listData($list,'id_kabkota','name');
+        echo CHtml::tag('option',array('value'=>''),'-- Pilih Kabupaten/Kota --', true);
+
+        foreach($list as $value=>$nama){
+            echo CHtml::tag('option',array('value'=>$value),CHtml::encode($nama), true);
+        }
+    }
 
 	/**
 	 * Performs the AJAX validation.

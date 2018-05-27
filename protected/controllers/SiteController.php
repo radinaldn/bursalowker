@@ -34,7 +34,7 @@ class SiteController extends Controller
 	}
 
 	public function actionIndex(){
-		$this->render('frontend');
+		$this->redirect(Yii::app()->request->baseUrl.'/index.php/site/loginpelamar');
 	}
 
 

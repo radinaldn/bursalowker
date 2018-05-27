@@ -42,8 +42,8 @@ class Pelamar extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_kota, id_jurusan, username, password, no_ktp, tgl_daftar, nama_lengkap, jenis_kelamin, tgl_lahir, alamat, no_hp, photo, id_telegram', 'required'),
-			array('id_kota, id_jurusan, id_telegram', 'numerical', 'integerOnly'=>true),
+			array('id_kabkota, id_jurusan, username, password, no_ktp, tgl_daftar, nama_lengkap, jenis_kelamin, tgl_lahir, alamat, no_hp, photo, id_telegram', 'required'),
+			array('id_kabkota, id_jurusan, id_telegram', 'numerical', 'integerOnly'=>true),
 			array('username, nama_lengkap', 'length', 'max'=>40),
 			array('no_ktp', 'length', 'max'=>16),
 			array('jenis_kelamin', 'length', 'max'=>1),
@@ -51,7 +51,7 @@ class Pelamar extends CActiveRecord
 			array('photo', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_pelamar, id_kota, id_jurusan, username, password, no_ktp, tgl_daftar, nama_lengkap, jenis_kelamin, tgl_lahir, alamat, no_hp, photo, id_telegram', 'safe', 'on'=>'search'),
+			array('id_pelamar, id_kabkota, id_jurusan, username, password, no_ktp, tgl_daftar, nama_lengkap, jenis_kelamin, tgl_lahir, alamat, no_hp, photo, id_telegram', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +65,7 @@ class Pelamar extends CActiveRecord
 		return array(
 			'lamarans' => array(self::HAS_MANY, 'Lamaran', 'id_pelamar'),
 			'idJurusan' => array(self::BELONGS_TO, 'JurusanPendidikan', 'id_jurusan'),
-			'idKota' => array(self::BELONGS_TO, 'Kota', 'id_kota'),
+			'idKota' => array(self::BELONGS_TO, 'Kota', 'id_kabkota'),
 		);
 	}
 
@@ -76,7 +76,7 @@ class Pelamar extends CActiveRecord
 	{
 		return array(
 			'id_pelamar' => 'Id Pelamar',
-			'id_kota' => 'Id Kota',
+			'id_kabkota' => 'Id Kota',
 			'id_jurusan' => 'Id Jurusan',
 			'username' => 'username',
 			'password' => 'Password',
@@ -141,7 +141,7 @@ class Pelamar extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_pelamar',$this->id_pelamar);
-		$criteria->compare('id_kota',$this->id_kota);
+		$criteria->compare('id_kabkota',$this->id_kabkota);
 		$criteria->compare('id_jurusan',$this->id_jurusan);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
@@ -160,7 +160,7 @@ class Pelamar extends CActiveRecord
 	}
 
 	public function getAllValid(){
-		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = 'pelamar' ORDER BY pelamar.tgl_daftar DESC;";
+		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kabkota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kabkota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = 'pelamar' ORDER BY pelamar.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -169,7 +169,7 @@ class Pelamar extends CActiveRecord
 	}
 
 	public function getAllNonValid(){
-		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' ORDER BY pelamar.tgl_daftar DESC;";
+		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kabkota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kabkota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' ORDER BY pelamar.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -178,7 +178,7 @@ class Pelamar extends CActiveRecord
 	}
 
 	public function getNonValidByPk($id){
-		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' AND pelamar.id_pelamar = '$id' ORDER BY pelamar.tgl_daftar DESC;";
+		$sql = "SELECT pelamar.id_pelamar, pelamar.nama_lengkap, pelamar.id_kabkota, tb_kabkota.name, pelamar.id_jurusan, jurusan_pendidikan.nama_jurusan, pelamar.username, pelamar.no_ktp, pelamar.photo, pelamar.id_telegram FROM pelamar INNER JOIN tb_kabkota, jurusan_pendidikan WHERE pelamar.id_kabkota = tb_kabkota.id_kabkota AND pelamar.id_jurusan = jurusan_pendidikan.id_jurusan AND pelamar.level = '' AND pelamar.id_pelamar = '$id' ORDER BY pelamar.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -195,7 +195,13 @@ class Pelamar extends CActiveRecord
 		return $model;
 	}
 
-	
+    public function kabkotaList()
+    {
+        $models = Kabkota::model()->findAll(array('condition' => 'id_provinsi = ' . $this->id_provinsi, 'order'=> 'name'));
+        foreach ($models as $model)
+            $_items[$model->id_kabkota] = $model->name;
+        return $_items;
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

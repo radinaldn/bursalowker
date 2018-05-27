@@ -45,33 +45,50 @@ $date = date("Y-m-d");
 <p class="note">Form dengan tanda <span class="required">*</span> wajib diisi.</p>
 
   <br>
-	<div class="form-group">
-      <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Provinsi *</label>
-      <div class="col-sm-9">
-        <?php
-        $opt = CHtml::listData(Provinsi::model()->findAll(),'id_provinsi','name');
-        echo $form->dropDownList($model,'id_kota',$opt,array('class'=>'form-control has-feedback-left','required'=>'required'));
-        ?>
-        <span class="fa fa-tasks form-control-feedback left" aria-hidden="true"></span>
-      </div>
-      <?php echo $form->error($model,'id_kota'); ?>
-    </div>
-  <div class="clearfix"></div>
-  <br>
 
-  <div class="form-group">
-      <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Kota *</label>
-      <div class="col-sm-9">
-        <?php
-        $opt = CHtml::listData(Kabkota::model()->findAll(),'id_kabkota','name');
-        echo $form->dropDownList($model,'id_kota',$opt,array('class'=>'form-control has-feedback-left','required'=>'required'));
-        ?>
-        <span class="fa fa-tasks form-control-feedback left" aria-hidden="true"></span>
-      </div>
-      <?php echo $form->error($model,'id_kota'); ?>
-    </div>
-  <div class="clearfix"></div>
-  <br>
+        <div class="form-group">
+            <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Provinsi *</label>
+            <div class="col-sm-9">
+                <?php
+                echo $form->DropDownList($model,'id_provinsi',
+                    CHtml::listData(Provinsi::model()->findAll(),'id_provinsi','name'),
+                    array(
+                        'required'=>'required',
+                        'class'=>'form-control has-feedback-left',
+                        'prompt'=>'-- Pilih Provinsi --',
+                        'ajax' => array(
+                            'type'=>'POST',
+                            'url'=>CController::createUrl('perusahaan/selectkabkota'), //selectjur adalah actionSelectkec di SaksiController.
+                            'update'=>'#'.CHtml::activeId($model,'id_kabkota'), //jurusan_id = field jurusan_id
+                            'beforeSend'=>'function() { //Penting!! agar setiap ganti pilihan kabkota, maka kec dan keldesa akan ikut terupdate, jadi kosong.
+       $("#Saksi_prodi_id").find("option").remove();
+     }', //Bila tidak menggunakan ini, maka yg terupdate hanya jurusan (bawaan 'update').
+                        )
+                    )
+                );
+                ?>
+                <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
+                <?php echo $form->error($model,'id_provinsi'); ?>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+
+            <div class="form-group">
+                <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Kabupaten/Kota *</label>
+                <div class="col-sm-9">
+                    <?php echo $form->dropDownList($model,'id_kabkota',
+                        (!$model->isNewRecord) ? $model->kabkotaList() :array(),
+                        array(
+                            'required'=>'required',
+                            'class'=>'form-control has-feedback-left',
+                            'prompt'=>'-- Pilihan --',
+                        )
+                    ); ?>
+                    <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
+                    <?php echo $form->error($model,'id_kabkota'); ?>
+                </div>
+                <div class="clearfix"></div>
+                <br>
 
 
   <div class="form-group">

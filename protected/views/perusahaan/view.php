@@ -82,7 +82,7 @@ $this->menu=array(
                                     </tr>
                                     <tr>
                                         <th scope="row">ID Kota</th>
-                                        <td><?php echo $model->id_kota; ?></td>
+                                        <td><?php echo $model->id_kabkota; ?></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">username</th>
