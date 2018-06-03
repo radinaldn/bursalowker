@@ -156,13 +156,13 @@ $date = date("Y-m-d");
   <div class="clearfix"></div>
   <br>
 
-   <div class="form-group">
+  <div class="form-group">
  <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Jenis Kelamin *</label>
  <div class="col-sm-9">
  <?php echo $form->dropDownList($model,'jenis_kelamin',
  array(
-  'L'=>'Laki-Laki',
-   'P'=>'Perempuan',
+  'Laki-Laki'=>'Laki-Laki',
+   'Perempuan'=>'Perempuan',
  ),array(
  'class'=>'form-control has-feedback-left',
  'required'=>'required',

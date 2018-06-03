@@ -94,7 +94,35 @@ class LowonganController extends Controller
 			$model->id_perusahaan=Yii::app()->session->get('id_perusahaan');
 			$model->tgl_buat = $date;
 			if($model->save())
+			{
+				// panggil data lowongan
+
+				// panggil data pelamar dengan id_jurusan
+					$pelamars = Pelamar::model()->findAll(array("condition"=>"id_jurusan =  $model->id_jurusan"));
+
+
+					$token_bot = "bot579741209:AAHELNwUG-8hwTBnszEO4m5eMA_4AnJnnD8";
+
+					$pesan = "INFO LOWONGAN KERJA".PHP_EOL.
+							 "Dibutuhkan ".$model->pekerjaan.PHP_EOL.
+							 "di ".$model->idPerusahaan->nama_perusahaan.PHP_EOL.
+							 "Jenis kelamin ".$model->jenis_kelamin.PHP_EOL.
+							 "Usia maks ".$model->usia_max.PHP_EOL.
+							 "Persyaratan ".$model->persyaratan.PHP_EOL.
+							 "Batas lamaran ".$model->batas_lamaran.PHP_EOL.
+							 $model->idPerusahaan->situs;
+
+					foreach ($pelamars as $pelamar) {
+
+						$notifikasi_lamarans = NotifikasiLamaran::model()->sendMessage($pelamar->id_telegram, $pesan, $token_bot);
+					}
+					
+
+				// broadcast ke telegram
+
+
 				$this->redirect(array('viewPerusahaan','id'=>$model->id_lowongan));
+			}
 		}
 
 		$this->render('create',array(

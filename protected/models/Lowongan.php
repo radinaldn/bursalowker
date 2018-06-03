@@ -51,7 +51,7 @@ class Lowongan extends CActiveRecord
 			array('pekerjaan', 'length', 'max'=>50),
 			array('tipe_pekerjaan, status', 'length', 'max'=>15),
 			array('tawaran_gaji', 'length', 'max'=>25),
-			array('jenis_kelamin', 'length', 'max'=>3),
+			array('jenis_kelamin', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_lowongan, id_kategori, id_perusahaan, id_provinsi, id_kabkota, id_jurusan, tgl_buat, pekerjaan, tipe_pekerjaan, deskripsi, persyaratan, tawaran_gaji, usia_max, jenis_kelamin, batas_lamaran, status, tgl_panggilan', 'safe', 'on'=>'search'),

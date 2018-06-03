@@ -83,6 +83,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 								<th>username</th>
 								<th>Alamat</th>
 								<th>No Telp</th>
+								<th>Berkas</th>
 								<th></th>
 							</tr>
 							</thead>
@@ -103,6 +104,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										<td><?= $data['username']; ?></td>
 										<td><?= $data['alamat']; ?></td>
 										<td><?= $data['no_telp']; ?></td>
+										<td><a href="<?= Yii::app()->request->baseUrl ?>/files/<?= $data['berkas']; ?>"><?= $data['berkas']; ?></a></td>
 										<td>
 										<!--<div class="hidden-sm hidden-xs action-buttons">-->
 											<a class="btn btn-success btn-xs" href="<?= $data['id_perusahaan']; ?>" role="button"><i class="fa fa-search"></i></a>
@@ -158,6 +160,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 								<th>username</th>
 								<th>Alamat</th>
 								<th>No Telp</th>
+								<th>Berkas</th>
 								<th></th>
 							</tr>
 							</thead>
@@ -178,6 +181,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 										<td><?= $data['username']; ?></td>
 										<td><?= $data['alamat']; ?></td>
 										<td><?= $data['no_telp']; ?></td>
+										<td><a href="<?= Yii::app()->request->baseUrl ?>/files/<?= $data['berkas']; ?>"><?= $data['berkas']; ?></a></td>
 										<td>
 										<!--<div class="hidden-sm hidden-xs action-buttons">-->
 										<a onclick="return confirm('Anda yakin ingin memvalidasi <?php echo $data['nama_perusahaan'];?>?')" class="btn btn-primary btn-xs" href="validasi/<?= $data['id_perusahaan']; ?>" role="button"><i class="fa fa-check"></i>Validasi</a>

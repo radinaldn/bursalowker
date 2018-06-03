@@ -205,15 +205,22 @@ $date = date("Y-m-d");
   <br>
 
   <div class="form-group">
-		<label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Jenis Kelamin *</label>
-    <div class="col-sm-9">
-		<?php echo $form->textField($model,'jenis_kelamin',array('class'=>'form-control has-feedback-left', 'placeholder'=>'contoh: L/P')); ?>
-    <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
-    </div>
-		<?php echo $form->error($model,'jenis_kelamin'); ?>
-	</div>
-  <div class="clearfix"></div>
-  <br>
+ <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Jenis Kelamin *</label>
+ <div class="col-sm-9">
+ <?php echo $form->dropDownList($model,'jenis_kelamin',
+ array(
+  'Laki-Laki'=>'Laki-Laki',
+   'Perempuan'=>'Perempuan',
+ ),array(
+ 'class'=>'form-control has-feedback-left',
+ 'required'=>'required',
+ )
+ ); ?> 
+ <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
+ <?php echo $form->error($model,'jenis_kelamin'); ?>
+</div>
+<div class="clearfix"></div>
+<br>
 
    <div class="form-group">
 		<label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Batas Lamaran *</label>

@@ -17,6 +17,7 @@ $date = date("Y-m-d");
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+  'htmlOptions'=>array('enctype'=>'multipart/form-data','autocomplete'=>'off'),
 )); ?>
 
 	<!-- Form baru -->
@@ -189,6 +190,18 @@ $date = date("Y-m-d");
 	</div>
   <div class="clearfix"></div>
   <br>
+
+  <div class="form-group">
+    <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Berkas *</label>
+    <div class="col-sm-9">
+    <?php echo $form->fileField($model,'berkas',array('class'=>'form-control has-feedback-left', 'placeholder'=>'contoh: 1','required'=>'required')); ?>
+    <span class="fa fa-text-width form-control-feedback left" aria-hidden="true"></span>
+    </div>
+    <?php echo $form->error($model,'berkas'); ?>
+  </div>
+  <div class="clearfix"></div>
+  <br>
+
 <!-- 
   <div class="form-group">
     <label class="col-sm-3 controll-label no-padding-right" for="form-field-1">Level *</label>

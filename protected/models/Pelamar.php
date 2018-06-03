@@ -46,7 +46,7 @@ class Pelamar extends CActiveRecord
 			array('id_kabkota, id_jurusan, id_telegram', 'numerical', 'integerOnly'=>true),
 			array('username, nama_lengkap', 'length', 'max'=>40),
 			array('no_ktp', 'length', 'max'=>16),
-			array('jenis_kelamin', 'length', 'max'=>1),
+			array('jenis_kelamin', 'length', 'max'=>10),
 			array('no_hp', 'length', 'max'=>12),
 			array('photo', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -65,7 +65,7 @@ class Pelamar extends CActiveRecord
 		return array(
 			'lamarans' => array(self::HAS_MANY, 'Lamaran', 'id_pelamar'),
 			'idJurusan' => array(self::BELONGS_TO, 'JurusanPendidikan', 'id_jurusan'),
-			'idKota' => array(self::BELONGS_TO, 'Kota', 'id_kabkota'),
+			'idKota' => array(self::BELONGS_TO, 'Kabkota', 'id_kabkota'),
 		);
 	}
 

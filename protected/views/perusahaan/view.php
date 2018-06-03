@@ -41,10 +41,10 @@ $this->menu=array(
                             <ul class="list-unstyled user_data">
                                 <table class="table">
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">ID Perusahaan</th>
+                                    <!-- <tr>
+                                        <th scope="row">Perusahaan</th>
                                         <td><?php echo $model->id_perusahaan; ?></td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <th scope="row">Nama Perusahaan</th>
                                         <td><?php echo $model->nama_perusahaan; ?></td>
@@ -76,13 +76,13 @@ $this->menu=array(
                                             <div class="panel-body">
                                                 <table class="table">
                                                     <tbody>
-                                    <tr>
+                                   <!--  <tr>
                                         <th scope="row">ID Perusahaan</th>
                                         <td><?php echo $model->id_perusahaan; ?></td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
-                                        <th scope="row">ID Kota</th>
-                                        <td><?php echo $model->id_kabkota; ?></td>
+                                        <th scope="row">Kota</th>
+                                        <td><?php echo $model->idKota->name; ?></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">username</th>

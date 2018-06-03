@@ -38,14 +38,15 @@ class Perusahaan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_kabkota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp', 'required'),
+			array('id_kabkota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp, berkas', 'required'),
 			array('id_kabkota', 'numerical', 'integerOnly'=>true),
 			array('username, nama_perusahaan, situs', 'length', 'max'=>40),
 			array('no_telp, no_hp', 'length', 'max'=>12),
 			array('nama_kontak', 'length', 'max'=>15),
+			array('berkas', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_perusahaan, id_kabkota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp', 'safe', 'on'=>'search'),
+			array('id_perusahaan, id_kabkota, username, password, tgl_daftar, nama_perusahaan, alamat, no_telp, situs, nama_kontak, no_hp, berkas', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +59,7 @@ class Perusahaan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'lowongans' => array(self::HAS_MANY, 'Lowongan', 'id_perusahaan'),
-			'idKota' => array(self::BELONGS_TO, 'Kabkoota', 'id_kabkota'),
+			'idKota' => array(self::BELONGS_TO, 'Kabkota', 'id_kabkota'),
 		);
 	}
 
@@ -79,6 +80,7 @@ class Perusahaan extends CActiveRecord
 			'situs' => 'Situs',
 			'nama_kontak' => 'Nama Kontak',
 			'no_hp' => 'No Hp',
+			'berkas' => 'Berkas',
 		);
 	}
 
@@ -111,6 +113,7 @@ class Perusahaan extends CActiveRecord
 		$criteria->compare('situs',$this->situs,true);
 		$criteria->compare('nama_kontak',$this->nama_kontak,true);
 		$criteria->compare('no_hp',$this->no_hp,true);
+		$criteria->compare('berkas',$this->berkas,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -148,7 +151,7 @@ class Perusahaan extends CActiveRecord
 	}
 
 	public function getAllValid(){
-		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kabkota, tb_kabkota.name, perusahaan.username, perusahaan.alamat, perusahaan.no_telp FROM perusahaan INNER JOIN tb_kabkota WHERE perusahaan.id_kabkota = tb_kabkota.id_kabkota AND perusahaan.level = 'perusahaan' ORDER BY perusahaan.tgl_daftar DESC;";
+		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kabkota, tb_kabkota.name, perusahaan.username, perusahaan.alamat, perusahaan.no_telp, perusahaan.berkas FROM perusahaan INNER JOIN tb_kabkota WHERE perusahaan.id_kabkota = tb_kabkota.id_kabkota AND perusahaan.level = 'perusahaan' ORDER BY perusahaan.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)
@@ -157,7 +160,7 @@ class Perusahaan extends CActiveRecord
 	}
 
 	public function getAllNonValid(){
-		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kabkota, tb_kabkota.name, perusahaan.username, perusahaan.alamat, perusahaan.no_telp FROM perusahaan INNER JOIN tb_kabkota WHERE perusahaan.id_kabkota = tb_kabkota.id_kabkota AND perusahaan.level = '' ORDER BY perusahaan.tgl_daftar DESC;";
+		$sql = "SELECT perusahaan.id_perusahaan, perusahaan.nama_perusahaan, perusahaan.id_kabkota, tb_kabkota.name, perusahaan.username, perusahaan.alamat, perusahaan.no_telp, perusahaan.berkas FROM perusahaan INNER JOIN tb_kabkota WHERE perusahaan.id_kabkota = tb_kabkota.id_kabkota AND perusahaan.level = '' ORDER BY perusahaan.tgl_daftar DESC;";
 
 		$model = Yii::app()->db
 			->createCommand($sql)

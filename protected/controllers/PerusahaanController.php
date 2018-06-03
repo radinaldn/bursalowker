@@ -96,10 +96,42 @@ class PerusahaanController extends Controller
 			$model->level="";
 			$acak=$model->generateSalt();
 			$model->password=$model->hashPassword($_POST['Perusahaan']['password'],$acak);
+
+			$rnd = rand(0,9999);
+			$model->attributes=$_POST['Perusahaan'];
+			$model->berkas='tes.zip';
+
 			if($model->save())
+			{
+					if(CUploadedFile::getInstance($model,'berkas'))
+					{
+						$newfilename='berkas/'.$model->id_perusahaan.'.zip';
+						$model->berkas=CUploadedFile::getInstance($model,'berkas');
+						$model->berkas->saveAs(Yii::getPathOfAlias('webroot').'/files/'.$newfilename);
+						$model->berkas=$newfilename;
+						$model->save();
+					}
+					if(CUploadedFile::getInstance($model,'berkas'))  // check if uploaded file is set or not
+					{
+						//todo
+					}
+				
+				}
+				if(!empty ($uploadedFile))
+					{
+						$fileName = "{$rnd}-{$uploadedFile}";
+						$var = '';
+						$model->berkas = $var.'/files/fl'.$fileName;
+						$model->save();
+						
+						$name=Yii::app()->basePath.'/../files/fl'.$fileName;
+						$uploadedFile->saveAs($name);
+					}
 				Yii::app()->user->setFlash('success', "Silahkan menunggu proses validasi akun anda");
 				$this->redirect(array("../index.php/site/loginperusahaan"));
-		}
+			}
+			
+		
 
 		$this->render('create',array(
 			'model'=>$model,
